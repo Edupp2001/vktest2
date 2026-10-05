@@ -1,0 +1,24 @@
+name: Weather Script CI
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: # Это позволит запускать скрипт вручную кнопкой на GitHub
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Клонирование репозитория
+      uses: actions/checkout@v4
+
+    - name: Установка Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Запуск скрипта
+      run: |
+        cd PythonApplication3
+        python PythonApplication3.py
